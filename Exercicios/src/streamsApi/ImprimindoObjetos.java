@@ -35,8 +35,8 @@ public class ImprimindoObjetos {
 
 		/*
 		 * Iterator valida se existe o proximo dado para iteração automaticamente
-		 * seria como se tivesse um IF que validasse se o dado existe denro da lista
-		 * ele é controlado por um 'while' pois quando é usado geralmente não se conhece
+		 * seria como se tivesse um IF que validasse se o dado existe dentro da lista.
+		 * Ele é controlado por um 'while' pois quando é usado geralmente não se conhece
 		 * o tamanho real da lista.
 		 * */
 		System.out.println("\nUsando o 'Iterador'...");
