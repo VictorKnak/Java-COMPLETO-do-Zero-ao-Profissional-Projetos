@@ -11,7 +11,7 @@ public class CriandoStreams {
 
 		// Usa programacao funcional para criar um referencia print
 		Consumer<String> print = System.out::print;
-		Consumer<Integer> println = System.out::println;
+//		Consumer<Integer> println = System.out::println;
 
 		// Cria uma Stream, usando um metodo ESTATICO 'Strean.of'
 		Stream<String> langs = Stream.of("Java ", "Lua ", "JS\n");
