@@ -25,7 +25,7 @@ public class Reduce2 {
 		// Function que recebe um valor e retorna outro
 		Function<Aluno, Double> apenasNota = a -> a.nota;
 		
-		// Cria uma operacao binaria de soma para ser usada no 'reduce'
+		// Cria uma operacao binaria de soma para ser usada no 'reduce' 
 		BinaryOperator<Double> somatorio = (a, b) -> a + b;
 		
 		alunos.stream()
