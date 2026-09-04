@@ -3,7 +3,6 @@ package streamsApi.Reduce;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.BinaryOperator;
-import java.util.function.Consumer;
 
 /*
  * O método reduce da Java Stream API é uma operação terminal 
