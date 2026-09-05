@@ -3,7 +3,7 @@ package streamsApi.Reduce;
 public class Aluno {
 	
 	final String nome;
-	final double nota;
+	public final double nota;
 	final boolean bomComportamento;
 	
 	
@@ -18,5 +18,8 @@ public class Aluno {
 		this.bomComportamento = bomComportamento;
 	}
 	
-	
+	@Override
+	public String toString() {	
+		return nome + " tem nota " + nota;
+	}
 }
