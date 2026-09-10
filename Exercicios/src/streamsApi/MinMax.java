@@ -18,7 +18,7 @@ public class MinMax {
 		// Cria lista do tipo objeto(Aluno)
 		List<Aluno> alunos = Arrays.asList(a1 ,a2 ,a3 ,a4 );
 		
-		// Comparador com if de linha
+		// Comparador com if de linhaa
 		Comparator<Aluno> melhorNota = (aluno1 , aluno2) -> {
 			if( aluno1.nota > aluno2.nota ) return 1;
 			if( aluno1.nota < aluno2.nota ) return -1;
