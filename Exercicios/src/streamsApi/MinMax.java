@@ -25,7 +25,7 @@ public class MinMax {
 			return 0;
 		};		
 		
-		// Verifica maior e menor com 'Min' e 'Max'
+		// Verifica maior e menor com 'Min' e 'Max'.
 		System.out.println(alunos.stream().max(melhorNota).get());   // Max
 		System.out.println(alunos.stream().min(melhorNota).get());	 // Min
 	}
