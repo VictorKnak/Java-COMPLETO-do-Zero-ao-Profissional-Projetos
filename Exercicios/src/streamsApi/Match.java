@@ -20,7 +20,7 @@ public class Match {
 		// Cria lista do tipo objeto(Aluno)
 		List<Aluno> alunos = Arrays.asList(a1 ,a2 ,a3 ,a4 );
 		
-		// Predicado, que recebe um aluno e retorna true/false, usado quando precisa filtrar
+		// Predicado, que recebe um aluno e retorna true ou false, usado quando precisa filtrar
 		Predicate<Aluno> aprovado = a -> a.nota >= 7;
 
 		// verifica se todos alunos foram aprovados com 'allMatch'
