@@ -8,7 +8,7 @@ import java.util.function.Predicate;
  * É uma operação intermediária que permite selecionar elementos 
  * de uma coleção com base em uma condição. Ele avalia um predicado 
  * e retorna uma nova stream contendo apenas os itens que retornam 
- * 'true' para essa condição
+ * 'true' para essa condição.
  * 
  * */
 
