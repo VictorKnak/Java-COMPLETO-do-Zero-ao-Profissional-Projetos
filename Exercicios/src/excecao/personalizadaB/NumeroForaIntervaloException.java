@@ -1,4 +1,4 @@
-package excessao.personalizadaB;
+package excecao.personalizadaB;
 
 /*
  * A classe herdada diretamente da classe Exception, ou seja, Excecao 'checada'

@@ -1,4 +1,4 @@
-package excessao.personalizadaA;
+package excecao.personalizadaA;
 
 /*
  * A classe herdada da classe RuntimeException(Excecao em tempo de execucao), ou seja, Excecao 'nao checada'

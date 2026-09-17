@@ -1,13 +1,13 @@
-package excessao.personalizadaA;
+package excecao.personalizadaB;
 
 /*
- * A classe herdada da classe RuntimeException(Excecao em tempo de execucao), ou seja, Excecao 'nao checada'
+ * A classe herdada diretamente da classe Exception, ou seja, Excecao 'checada'
  * */
 
 
 // Supre a serealizacao(seria um numero serial caso queira criar um obj em .txt por exemplo)
 @SuppressWarnings("serial")
-public class StringVaziaException extends RuntimeException {
+public class StringVaziaException extends Exception {
 	
 	private String nomeDoAtributo;
 	

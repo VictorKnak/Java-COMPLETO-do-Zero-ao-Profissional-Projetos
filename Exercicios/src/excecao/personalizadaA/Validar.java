@@ -1,6 +1,6 @@
-package excessao.personalizadaA;
+package excecao.personalizadaA;
 
-import excessao.Aluno;
+import excecao.Aluno;
 
 public class Validar {
 

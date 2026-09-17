@@ -1,4 +1,4 @@
-package excessao;
+package excecao;
 
 /*
  * 'throw' faz o lançamento da excessao de erro
