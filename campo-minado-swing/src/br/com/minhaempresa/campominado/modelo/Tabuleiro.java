@@ -14,7 +14,7 @@ public class Tabuleiro implements CampoObservador{
 	private final List<Campo> campos = new ArrayList<>();
 	
 	// Lista de observadores
-	private final List<Consumer<Boolean>> observadores = new ArrayList<>();
+	private final List<Consumer<ResultadoEvento>> observadores = new ArrayList<>();
 	
 	// Construtor
 	public Tabuleiro(int qtdLinhas, int qtdColunas, int qtdMinas) {
@@ -28,33 +28,23 @@ public class Tabuleiro implements CampoObservador{
 	}
 	
 	// Registra os observadores na lista
-	public void registrarObservador(Consumer<Boolean> observador){
+	public void registrarObservador(Consumer<ResultadoEvento> observador){
 		observadores.add(observador);		
 	}
 	
 	private void notificarObservadores(boolean resultado) {
-		observadores.stream().forEach(o -> o.accept(resultado));
+		observadores.stream().forEach(o -> o.accept(new ResultadoEvento(resultado)));  // Adiciona o resultado usando accept
 	}
 	
 	
-	public void abrir(int linha, int coluna) {
-		
-		try {			
-			campos
-			.stream()
-			.filter(c -> c.getLinha() == linha && c.getColuna() == coluna) // filtra a linha e coluna passadas
-			.findFirst()                                                  // pega o primeiro elemento
-			.ifPresent(c -> c.abrir());
-			
-		} catch(Exception e){
-			
-			// FIXME Ajustar a implementacao do metodo abrirs 
-			
-			// trata para abrir todos os campos quando achar uma bomba
-			campos.forEach(c -> c.setAberto(true));			
-			throw e;  // lanca excecao depois do tratamento
-		}
+	public void abrir(int linha, int coluna) {				
+		campos
+		.stream()
+		.filter(c -> c.getLinha() == linha && c.getColuna() == coluna) // filtra a linha e coluna passadas
+		.findFirst()                                                  // pega o primeiro elemento
+		.ifPresent(c -> c.abrir());
 	}
+
 	
 	public void alternaMarcacao(int linha, int coluna) {		
 		campos
@@ -75,7 +65,7 @@ public class Tabuleiro implements CampoObservador{
 				
 				// Cria um Objeto campo e adiciona no campo criado no observador
 				Campo campo = new Campo( l , c);
-				campo.registrarObservador(this);
+				campo.registrarObservador(this);   // Coloca a estancia atual como observador para todos os campos criados
 				campos.add(campo);
 			}			
 		}
@@ -129,14 +119,21 @@ public class Tabuleiro implements CampoObservador{
 	public void eventoOcorreu(Campo c, CampoEvento e) {
 		
 		if (e == CampoEvento.EXPLODIR) {
-			System.out.println("perdeu");
+//			System.out.println("perdeu");
+			mostrarMinas();
 			notificarObservadores(false);
 			
 		} else if (objetivoAlcancado()) {
-			System.out.println("Ganhemo");
+//			System.out.println("Ganhemo");
 			notificarObservadores(true);
 		} 
 		
+	}
+		
+	private void mostrarMinas() {		
+		campos.stream()
+		.filter(c -> c.isMinado())          // filtra pelos campos minhados
+		.forEach(c -> c.setAberto(true));			
 	}
 			
 	

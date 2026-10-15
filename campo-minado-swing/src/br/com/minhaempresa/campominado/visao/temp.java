@@ -9,6 +9,15 @@ public class temp {
 
 		Tabuleiro tabuleiro = new Tabuleiro(3,3,9);
 		
+		tabuleiro.registrarObservador(e -> {
+			if (e.isGanhou()) {
+				System.out.println("Ganhou.");
+			}else {
+				System.out.println("Perdeu.");				
+			}				
+				
+		});
+		
 		tabuleiro.alternaMarcacao(0, 0);
 		tabuleiro.alternaMarcacao(0, 1);
 		tabuleiro.alternaMarcacao(0, 2);
