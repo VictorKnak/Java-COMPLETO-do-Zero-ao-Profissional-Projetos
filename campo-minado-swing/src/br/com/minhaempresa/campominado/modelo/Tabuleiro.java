@@ -7,9 +7,9 @@ import java.util.function.Predicate;
 
 public class Tabuleiro implements CampoObservador{
 
-	private int qtdLinhas;
-	private int qtdColunas;
-	private int qtdMinas;
+	private final int qtdLinhas;
+	private final int qtdColunas;
+	private final int qtdMinas;
 	
 	private final List<Campo> campos = new ArrayList<>();
 	
@@ -25,6 +25,10 @@ public class Tabuleiro implements CampoObservador{
 		gerarCampo();
 		associarVizinhos();
 		sortearMinas();		
+	}
+	
+	public void paraCadaCampo(Consumer<Campo> funcao) {
+		campos.forEach(funcao);
 	}
 	
 	// Registra os observadores na lista
@@ -115,6 +119,20 @@ public class Tabuleiro implements CampoObservador{
 		sortearMinas();
 	}
 	
+	
+	
+	public int getQtdLinhas() {
+		return qtdLinhas;
+	}
+
+	public int getQtdColunas() {
+		return qtdColunas;
+	}
+
+	public int getQtdMinas() {
+		return qtdMinas;
+	}
+
 	@Override
 	public void eventoOcorreu(Campo c, CampoEvento e) {
 		

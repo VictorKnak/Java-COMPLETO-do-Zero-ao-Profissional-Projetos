@@ -2,6 +2,10 @@ package br.com.minhaempresa.campominado.visao;
 
 import br.com.minhaempresa.campominado.modelo.Tabuleiro;
 
+/*
+ * Classe para estar no Console
+ * */
+
 public class temp {
 
 	public static void main(String[] args) {
