@@ -65,7 +65,7 @@ public class Campo {
 	}
 	
 	// Altera a marcacao do campo
-	void alternaMarcacao() {
+	public void alternaMarcacao() {
 		if (!aberto) {
 			marcado = !marcado;
 			
@@ -80,7 +80,7 @@ public class Campo {
 	
 	
 	// abre o campo
-	boolean abrir() {
+	public boolean abrir() {
 		
 		// campo nao esta aberto e nao estar marcado
 		if (!aberto && !marcado) {
@@ -107,7 +107,7 @@ public class Campo {
 	}
 	
 	// Verifica se os campos vizinhos estao minados usando API Stream
-	boolean vizinhancaSegura() {
+	public boolean vizinhancaSegura() {
 		return vizinhos
 				.stream()
 				.noneMatch(v -> v.minado);	// Passa um Predicate no parametro, ele retorna true ou false 
@@ -158,8 +158,8 @@ public class Campo {
 		return desvendado || protegido;
 	}
 	
-	long minasNaVizinhanca() {
-		return vizinhos.stream().filter(v -> v.minado).count();
+	public int minasNaVizinhanca() {
+		return (int) vizinhos.stream().filter(v -> v.minado).count();
 	}
 
 	void reiniciar() {
