@@ -27,10 +27,11 @@ public class BotaoCampo extends JButton implements CampoObservador, MouseListene
 	private final Color BG_EXPLODIR = new Color(189 ,  66 ,  68 );
 	private final Color TEXTO_VERDE = new Color(  0 , 100 ,   0 );
 	
-	private Campo campo;		// Define o atributo da classe
+	private Campo campo;		// Define o atributo da classe do tipo Campo
 	
 	// Construtor do botao que recebe um campo no parametro
 	public BotaoCampo(Campo campo) {
+		
 		this.campo = campo;
 		setBackground(BG_PADRAO);                        // Seta a cor do background
 		setBorder(BorderFactory.createBevelBorder(0));   // Seta o estilo da borda do botao
@@ -115,7 +116,7 @@ public class BotaoCampo extends JButton implements CampoObservador, MouseListene
 
 	
 	
-	// Interface dos Eventos do Mouse Obriga a implementar todos estes 5 metodos para funcionar
+	// Interface dos Eventos do Mouse, Obriga a implementar todos estes 5 metodos para funcionar
 	// mesmo que não vá utilizar todos os metodos
 	@Override
 	public void mouseClicked(MouseEvent e) {

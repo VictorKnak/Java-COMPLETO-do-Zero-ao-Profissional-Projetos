@@ -29,7 +29,7 @@ public class PainelTabuleiro extends JPanel{
 //			add(new BotaoCampo(null));
 //		}
 		
-		// Adiciona o botao com o campo 
+		// Adiciona o botao com o campo no painel grafico(tela)
 		tabuleiro.paraCadaCampo(c -> add(new BotaoCampo(c)));
 		
 		
