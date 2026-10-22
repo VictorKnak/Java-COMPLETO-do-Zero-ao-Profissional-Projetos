@@ -6,6 +6,7 @@ import java.awt.event.MouseListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.SwingUtilities;
 
 import br.com.minhaempresa.campominado.modelo.Campo;
 import br.com.minhaempresa.campominado.modelo.CampoEvento;
@@ -58,30 +59,45 @@ public class BotaoCampo extends JButton implements CampoObservador, MouseListene
 				break;
 				
 			default:
-				aplicarEstiloPadrao();
-		
+				aplicarEstiloPadrao();		
 		}
+
+		// renderiza o componente na tela, tipo um 'Refresh'
+		SwingUtilities.invokeLater(() -> {
+			repaint();
+			validate();
+		});
+		
 	}
 
 	private void aplicarEstiloPadrao() {
-		// TODO Auto-generated method stub
-		
+		setBackground(BG_PADRAO);
+		setBorder(BorderFactory.createBevelBorder(0));   // Seta o estilo da borda do botao
+		setText("");
 	}
 
 	private void aplicarEstiloExplodir() {
-		// TODO Auto-generated method stub
-		
+		setBackground(BG_EXPLODIR);
+		setForeground(Color.WHITE);
+		setText("X");		
 	}
 
 	private void aplicarEstiloMarcar() {
-		// TODO Auto-generated method stub
-		
+		setBackground(BG_MARCAR);
+		setForeground(Color.BLACK);
+		setText("M");		
 	}
 
 	private void aplicarEstiloAbrir() {
-
-		setBackground(BG_PADRAO);                                 // Seta a cor do background
+		
 		setBorder(BorderFactory.createLineBorder(Color.GRAY));    // Seta a cor da borda
+		
+		if (campo.isMinado()) {
+			setBackground(BG_EXPLODIR);
+			return;
+		}
+		
+		setBackground(BG_PADRAO);                                 // Seta a cor do background
 		
 		// case que verifica a quantidade de minas na vizinhanca e seta a cor do campo
 		switch (campo.minasNaVizinhanca()) {

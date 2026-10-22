@@ -55,10 +55,12 @@ public class Campo {
 		// Verifica se a posicao eh na diagonal ou nao da posicao origem
 		if (deltaGeral == 1 && !diagonal) {
 			vizinhos.add(vizinho);
-			return true;			
+			return true;	
+			
 		} else if(deltaGeral == 2 && diagonal) {
 			vizinhos.add(vizinho);
-			return true;			
+			return true;	
+			
 		}else {
 			return false;
 		}				
@@ -166,6 +168,7 @@ public class Campo {
 		aberto = false;
 		minado = false;
 		marcado = false;
+		notificarObservadores(CampoEvento.REINICIAR);
 	}
 	
 

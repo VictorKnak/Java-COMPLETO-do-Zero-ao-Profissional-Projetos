@@ -2,7 +2,9 @@ package br.com.minhaempresa.campominado.visao;
 
 import java.awt.GridLayout;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 import br.com.minhaempresa.campominado.modelo.Tabuleiro;
 
@@ -33,8 +35,20 @@ public class PainelTabuleiro extends JPanel{
 		tabuleiro.paraCadaCampo(c -> add(new BotaoCampo(c)));
 		
 		
+		// Registra o observador e verifica se ganhou ou perdeu
 		tabuleiro.registrarObservador(e -> {
-			// TODO mostrar resultado par ao usuario
+			
+			// Ele forca invocar a execucao do codigo depois, ele recebe uma interface 'Runable'
+			SwingUtilities.invokeLater( () -> {
+				
+				if (e.isGanhou()) {
+					JOptionPane.showMessageDialog(this, "Ganhou :D");
+				}else {
+					JOptionPane.showMessageDialog(this, "Perdeu :(");				
+				}
+				
+				tabuleiro.reiniciar();
+			});
 		});
 		
 	}
