@@ -9,6 +9,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import br.com.empresa.calc.modelo.Memoria;
+
 @SuppressWarnings("serial")
 public class Teclado extends JPanel implements ActionListener{
 
@@ -73,7 +75,7 @@ public class Teclado extends JPanel implements ActionListener{
 		
 	}
 
-	//
+	// Método da interface ActionListener em Java usado para tratar eventos de ação como click de mouse ou teclado
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
@@ -83,8 +85,8 @@ public class Teclado extends JPanel implements ActionListener{
 			// Pela origem do evento, busca o object button
 			JButton botao = (JButton) e.getSource();
 			
-			// Pega o Texto do botao
-			System.out.println(botao.getText());
+			// pega a estancia da memoria e processa o comando para colocar no display 
+			Memoria.getInstancia().processarComando(botao.getText());
 		}
 		
 	}
