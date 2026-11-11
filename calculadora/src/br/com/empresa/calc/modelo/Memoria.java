@@ -13,7 +13,7 @@ import java.util.List;
 public class Memoria {
 	
 	private enum TipoComando {
-			ZERAR, NUMERO, DIVISAO, MULTIPLICACAO, SUBTRACAO, SOMA, IGUAL, VIRGULA;
+			ZERAR, NUMERO, DIVISAO, MULTIPLICACAO, SUBTRACAO, SOMA, IGUAL, VIRGULA, SINAL;
 	};
 	
 
@@ -62,16 +62,64 @@ public class Memoria {
 			substituir = false;
 			ultimaOperacao = null;
 			
+		} else if(tipoComando == TipoComando.SINAL){
+			
+			// Valida se coloca ou remove o sinal
+			if (!textoAtual.contains("-")) {
+				textoAtual = "-" + textoAtual;				
+			} else {
+				textoAtual = textoAtual.substring(1);
+			}
+			
 		} else if(tipoComando == TipoComando.NUMERO || tipoComando == TipoComando.VIRGULA) {
 			textoAtual = substituir ? texto : textoAtual + texto;
 			substituir = false;
 			
-		} else {
-			
+		} else {			
+			substituir = true;
+			textoAtual = obterResultadoOperacao();
+			textoBuffer = textoAtual;
+			ultimaOperacao = tipoComando;
 		}
 		
 		
 		observadores.forEach( o -> o.valorAlterado(getTextoAtual()));
+	}
+
+	private String obterResultadoOperacao() {
+		
+		if(ultimaOperacao == null || ultimaOperacao == TipoComando.IGUAL) {
+			return textoAtual;
+			
+		} else {
+			
+			double numeroBuffer = Double.parseDouble( textoBuffer.replace(",", ".") ); // Altera o texto para double			
+			double numeroAtual = Double.parseDouble( textoAtual.replace(",", ".") );   // Altera o texto para double
+			
+			double resultado = 0;
+			
+			if (ultimaOperacao == TipoComando.SOMA) {
+				resultado = numeroBuffer + numeroAtual;
+				
+			} else if(ultimaOperacao == TipoComando.SUBTRACAO) {
+				resultado = numeroBuffer - numeroAtual;
+				
+			} else if(ultimaOperacao == TipoComando.MULTIPLICACAO) {
+				resultado = numeroBuffer * numeroAtual;
+				
+			} else if(ultimaOperacao == TipoComando.DIVISAO) {
+				resultado = numeroBuffer / numeroAtual;				
+			}
+			
+			// Converte o resultado em String
+			String resultadoString = Double.toString(resultado).replace(".", ",");
+			
+			// Verifica se o final da string termina com virgula zero
+			boolean inteiro = resultadoString.endsWith(",0");
+						
+			// Se for inteiro remove o ",0" do final da String
+			return inteiro ? resultadoString.replace(",0", "") : resultadoString;			
+		}		
 	}
 
 	private TipoComando detectarTipoComando(String texto) {
@@ -105,6 +153,9 @@ public class Memoria {
 				
 			} else if("=".equals(texto)) {
 				return TipoComando.IGUAL;
+				
+			} else if("+/-".equals(texto)) {
+				return TipoComando.SINAL;
 				
 			} else if(",".equals(texto) && !textoAtual.contains(",")) {
 				return TipoComando.VIRGULA;

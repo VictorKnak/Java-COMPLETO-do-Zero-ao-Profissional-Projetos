@@ -372,5 +372,9 @@
     2. **Desacoplar a Lógica:** Separa a aparência visual do software da regra de negócio que deve ser executada quando algo acontece.
     3. **Executar Código:** *Obrigada a implementação de um único método principal*, o actionPerformed(ActionEvent e), onde você coloca o código que deve rodar no momento em que o evento é disparado.
 
+\--------------------------------------------------------------------
 
+###### **Anotação @FunctionalInterface:**
+
+* Serve para indicar explicitamente que uma interface possui apenas um único método abstrato e garantir que o compilador valide essa regra.
 
