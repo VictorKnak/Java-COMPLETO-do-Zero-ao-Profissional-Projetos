@@ -4,6 +4,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+// imports para testar se o arquivo eh encontrado
+//import java.util.Locale;
+//import java.util.ResourceBundle;
+
 /*
  * Para conectar com qualquer banco, necessariamente precisa ter o Driver do banco a ser conectado instalado
  * na máquina, servidor e etc. Para isso, pode ser acessado o site do Banco que foi instalado e baixar o 
@@ -19,8 +23,32 @@ import java.sql.SQLException;
 
 public class TesteConexao {
 
-	public static void main(String[] args) throws SQLException {
-	
+	public static void main(String[] args) throws SQLException, ClassNotFoundException {
+
+//      **************************************************************************************************
+//		****** Teste para ver se o arquivo com o erro esta sendo encontrado e carregado na aplicacao *****
+//			
+//		String nomeBundle = "com.mysql.cj.LocalizedErrorMessages";
+//
+//		try {
+//		    ResourceBundle bundle = ResourceBundle.getBundle(
+//		        nomeBundle,
+//		        Locale.ROOT,
+//		        TesteConexao.class.getClassLoader()
+//		    );
+//
+//		    System.out.println("ResourceBundle carregado!");
+//		    System.out.println("Mensagens disponíveis: " + bundle.keySet().size());
+//
+//		} catch (Exception e) {
+//		    e.printStackTrace();
+//		}
+//		
+//		
+//		
+//		Class.forName("com.mysql.cj.jdbc.Driver");
+//      **************************************************************************************************s		
+		
 		// String com a conexao
 		final String url = "jdbc:mysql://localhost:3306?verifyServerCertificate=false&useSSL=true";   // URL do Servidor que ira se conectar
 		final String usr = "root";
